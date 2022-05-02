@@ -13,11 +13,16 @@ import "./Cell.css";
  * This handles clicks --- by calling flipCellsAroundMe
  *
  **/
-
+let count = 0;
+function counter() {
+   count += 1;
+   document.getElementById("clicks").innerHTML = `You Clicked ${count} Times`;
+}
 
 function Cell({ flipCellsAroundMe, isLit }) {
   const classes = `Cell ${isLit ? "Cell-lit" : ""}`;
-  return <td className={classes} onClick={flipCellsAroundMe} role="button" />;
+  return <td className={classes} onClick={() => {flipCellsAroundMe();counter()}} role="button" />
 }
 
 export default Cell;
+export {counter}
